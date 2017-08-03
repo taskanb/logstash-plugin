@@ -8,12 +8,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'mvn -B -DskipTests clean install'
+        sh './tools/build.sh'
       }
     }
     stage('Test') {
       steps {
-        sh 'mvn -B test'
+        sh './tools/test.sh'
       }
     }
   }
