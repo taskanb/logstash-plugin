@@ -1,9 +1,19 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'maven:3-alpine'
+      args '-v /home/bitwiseman/docker/.m2:/root/.m2'
+    }
+  }
   stages {
     stage('Build') {
       steps {
-        echo 'Jenkins Build of Plugin'
+        sh 'mvn -B -DskipTests clean install'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'mvn -B test'
       }
     }
   }
