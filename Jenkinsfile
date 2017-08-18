@@ -2,8 +2,9 @@ pipeline {
   agent {
     docker {
       image 'maven:3-alpine'
-      args '-v /home/bitwiseman/docker/.m2:/root/.m2'
+      args '-v /home/jenkins/docker/.m2:/root/.m2'
     }
+    
   }
   stages {
     stage('Build') {
@@ -13,7 +14,9 @@ pipeline {
       post {
         success {
           archiveArtifacts 'target/*.hpi,target/*.jpi'
+          
         }
+        
       }
     }
     stage('Test') {
@@ -23,7 +26,9 @@ pipeline {
       post {
         always {
           junit '**/surefire-reports/**/*.xml'
+          
         }
+        
       }
     }
   }
