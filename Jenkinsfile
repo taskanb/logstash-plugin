@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        bat './tools/build.sh'
+        sh './tools/build.sh'
       }
       post {
         success {
@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        bat './tools/test.sh'
+        sh './tools/test.sh'
       }
       post {
         always {
