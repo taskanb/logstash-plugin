@@ -7,8 +7,7 @@ pipeline {
       }
       post {
         success {
-          archiveArtifacts 'target/*.hpi,target/*.jpi'
-          
+          archiveArtifacts 'target/*.hpi,target/*.jpi'   
         }
         
       }
